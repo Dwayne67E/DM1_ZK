@@ -1,3 +1,6 @@
+# DM1 - Zero-Knowledge - ENKIRCHE Elias
+## Les exercices ont été réalisé avec ChatGPT afin de bien comprendre et de faire une rédaction compréhensible 
+
 ### Exercice 1 : Non-résiduosité quadratique (2 points)
 
 **Problème** :  
