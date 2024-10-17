@@ -78,6 +78,8 @@ sans révéler ces valeurs au vérifieur.
 - **Solidité** : Si le prouveur ne connaît pas \( s \) et \( t \), il ne pourra pas deviner les réponses \( z_1 \) et \( z_2 \) correspondant à un engagement aléatoire \( a \).
 - **Divulgation nulle de connaissance** : Le vérifieur n'apprend rien d'autre que le fait que le prouveur connaît \( s \) et \( t \), grâce à l'utilisation des valeurs aléatoires \( r_1 \) et \( r_2 \).
 
+---
+
 ### Exercice 3 : Un vote électronique simple
 
 Supposons que \( n \) personnes votent entre deux candidats, avec le protocole suivant :
