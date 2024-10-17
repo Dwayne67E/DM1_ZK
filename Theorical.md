@@ -1,7 +1,7 @@
 # DM1 - Zero-Knowledge - ENKIRCHE Elias
-## Les exercices ont été réalisé avec ChatGPT afin de bien comprendre et de faire une rédaction compréhensible 
+## Les exercices ont été réalisé avec l'aide d'une IA (ChatGPT) afin de bien comprendre et de faire une rédaction compréhensible 
 
-### Exercice 1 : Non-résiduosité quadratique (2 points)
+### Exercice 1 : Non-résiduosité quadratique 
 
 **Problème** :  
 Construire un protocole à divulgation nulle de connaissance permettant à un prouveur, qui connaît la factorisation du module RSA \( N = p \cdot q \), de prouver à un vérifieur honnête que \( x \in Z^*_N \) n'est **pas un carré modulo \( N \)**, sans révéler d'autres informations.
@@ -35,7 +35,7 @@ Construire un protocole à divulgation nulle de connaissance permettant à un pr
 
 ---
 
-### Exercice 2 : Preuve de connaissance d'une représentation (4 points)
+### Exercice 2 : Preuve de connaissance d'une représentation
 
 **Problème** :  
 On considère un groupe \( G \) d'ordre premier \( q \), avec \( g \) et \( h \) deux générateurs de \( G \). Un prouveur doit prouver de façon à divulgation nulle de connaissance (zero-knowledge proof) qu'il connaît les valeurs \( s \) et \( t \) telles que :
