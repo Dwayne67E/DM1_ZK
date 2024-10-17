@@ -14,20 +14,20 @@ y = pow(g, x, p)  # Public key g^x mod p
 #  nonce `k`
 k = randint(1, p - 1)  
 
-# the below code is faulty
 @app.route('/vulnerable-proof', methods=['GET'])
 def vulnerable_schnorr_proof():
     """
-    Vulnerable server 
+    Vulnerable server: Generate a Schnorr proof with predictable behavior
     """
+    k = randint(1, p - 1)  # Random nonce
     r = pow(g, k, p)  # Commitment
-
+    
     # Calculate challenge e as hash of r
     e = int(sha256(str(r).encode()).hexdigest(), 16)
-
-    # Response s = k + e*x mod (p-1)
+    
+    # Faulty response: s = k + e*x mod (p-1)
     s = (k + e * x) % (p - 1)
-
+    
     proof = {
         'r': r,
         'e': e,
@@ -36,7 +36,7 @@ def vulnerable_schnorr_proof():
         'g': g,  # Generator
         'p': p,  # Prime modulus
     }
-
+    
     return jsonify(proof)
 
 
@@ -46,4 +46,3 @@ def home():
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
-
