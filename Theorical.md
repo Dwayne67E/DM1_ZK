@@ -78,3 +78,41 @@ sans révéler ces valeurs au vérifieur.
 - **Solidité** : Si le prouveur ne connaît pas \( s \) et \( t \), il ne pourra pas deviner les réponses \( z_1 \) et \( z_2 \) correspondant à un engagement aléatoire \( a \).
 - **Divulgation nulle de connaissance** : Le vérifieur n'apprend rien d'autre que le fait que le prouveur connaît \( s \) et \( t \), grâce à l'utilisation des valeurs aléatoires \( r_1 \) et \( r_2 \).
 
+### Exercice 3 : Un vote électronique simple
+
+Supposons que \( n \) personnes votent entre deux candidats, avec le protocole suivant :
+
+- Une autorité de confiance choisit un chiffrement à clé publique avec une paire clé privée/clé publique ElGamal \((sk = x, pk = g^x)\) et publie \( pk \).
+- Chaque votant \( i \) choisit son candidat \( v_i \in \{0, 1\} \), chiffre \( g^{v_i} \) avec ElGamal, et publie le résultat.
+- Le résultat du vote est le produit des messages chiffrés (grâce à l'homomorphisme multiplicatif d'ElGamal). L'autorité de confiance déchiffre le résultat \( g^{v_1 + ... + v_n} \) et publie une preuve que c'est bien le déchiffrement du produit des messages chiffrés.
+
+#### 1. Comment récupérer le résultat effectif du vote \( v_1 + ... + v_n \) ?
+
+L'autorité de confiance utilise sa clé privée \( sk = x \) pour déchiffrer le produit des votes chiffrés \( C = g^{v_1 + ... + v_n} \). Le déchiffrement d'ElGamal permet de retrouver directement \( v_1 + ... + v_n \) en calculant l'exposant du générateur \( g \) dans \( C \). Autrement dit, le déchiffrement donne l'expression \( g^{v_1 + ... + v_n} \), et connaissant la clé privée, l'autorité de confiance peut récupérer la somme des votes \( v_1 + ... + v_n \).
+
+#### 2. Argumenter que la dernière étape doit être correcte, sûre, et à divulgation nulle de connaissance.
+
+- **Correcte** : La dernière étape est correcte car elle s'appuie sur le chiffrement homomorphique d'ElGamal. Le produit des votes chiffrés \( C = g^{v_1 + ... + v_n} \) est déchiffré correctement en utilisant la clé privée \( sk \), garantissant que le résultat correspond bien à la somme des votes.
+  
+- **Sûre** : La sécurité repose sur la difficulté de résoudre le logarithme discret dans \( G \). Sans la clé privée \( sk \), un attaquant ne peut pas déchiffrer le produit des votes ni obtenir des informations sur les votes individuels. Ainsi, la confidentialité des votes est préservée.
+  
+- **À divulgation nulle de connaissance** : L'autorité de confiance publie une preuve à divulgation nulle de connaissance (zero-knowledge) pour démontrer qu'elle a correctement déchiffré le produit \( C \). Cette preuve permet de vérifier que le résultat est correct sans révéler d'informations supplémentaires sur les votes individuels.
+
+#### 3. Proposer une manière de réaliser cette dernière étape qui assure ces propriétés.
+
+Pour assurer que la dernière étape est correcte, sûre, et à divulgation nulle de connaissance, on peut utiliser un **protocole de Schnorr** adapté au contexte. Voici comment procéder :
+
+1. **Preuve à divulgation nulle de connaissance (protocole de Schnorr)** :
+   - L'autorité de confiance prouve qu'elle connaît la clé privée \( x \) correspondant à la clé publique \( pk = g^x \), sans révéler \( x \).
+   - Elle choisit un nombre aléatoire \( r \in \mathbb{Z}_q \), calcule \( a = g^r \), et envoie \( a \) au vérifieur.
+   - Le vérifieur envoie un défi aléatoire \( e \in \mathbb{Z}_q \).
+   - L'autorité de confiance répond en calculant \( z = r + e * x \mod q \) et envoie \( z \).
+   - Le vérifieur vérifie que \( g^z = a * pk^e \). Si cette égalité est vérifiée, cela prouve que l'autorité de confiance connaît \( x \) sans le révéler.
+
+2. **Propriétés du protocole** :
+   - **Correcte** : Le vérifieur peut s'assurer que l'autorité de confiance connaît bien \( x \), et donc que le déchiffrement est correct.
+   - **Sûre** : La sécurité repose sur la difficulté du logarithme discret ; même avec cette preuve, le vérifieur ne peut pas découvrir \( x \).
+   - **Divulgation nulle de connaissance** : Le protocole de Schnorr garantit que le vérifieur n'apprend rien d'autre que le fait que l'autorité de confiance connaît \( x \), respectant ainsi la propriété de divulgation nulle de connaissance.
+
+Ainsi, ce protocole de Schnorr adapté permet de prouver correctement, en toute sécurité, et à divulgation nulle de connaissance, que l'autorité de confiance a bien effectué le déchiffrement du produit des votes.
+
