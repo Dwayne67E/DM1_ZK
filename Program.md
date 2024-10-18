@@ -61,8 +61,7 @@ On aura donc les deux équations:
 - `s2` = `k2` + `e2` * `x` mod(`p`- 1)
 
 Et en soustrayant les deux équation `s2` - `s1` on obtient alors: 
-
-![Capture d'écran 2024-10-18 200724](https://github.com/user-attachments/assets/3fef8a46-240b-4a39-8c5e-5559e9fc1b65)
+![image](https://github.com/user-attachments/assets/2f052e44-4045-4ee1-b781-b8fd6e38b2f0)
 
 On utilise alors le code ci-dessous: 
 
