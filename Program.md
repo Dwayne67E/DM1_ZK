@@ -22,7 +22,7 @@ Lancement du conteneur Docker à partir d'une image. Ici, l'image utilisée est 
 ### Récupération de la preuve de Schnorr
 Elle envoie une requête GET à ton serveur Flask à l'adresse http://localhost:5000/schnorr-proof.
 Le serveur Flask génère une preuve de Schnorr (comme spécifié dans le code), incluant des valeurs comme 
-r, 𝑒, 𝑠, la clé publique 𝑦, le générateur 𝑔, et le module premier 𝑝, puis renvoie ces informations sous forme de JSON.
+`r`, `𝑒`, `𝑠`, la clé publique `𝑦`, le générateur `𝑔`, et le module premier `𝑝`, puis renvoie ces informations sous forme de JSON.
 curl affiche ensuite cette réponse dans le terminal.
 ![image](https://github.com/user-attachments/assets/217b2cf1-82ed-434a-ae04-6c54d8e864e5)
 
@@ -33,8 +33,8 @@ Le serveur Flask reçoit ces données et utilise la fonction `verify_proof` pour
 
 Le serveur effectue la vérification en calculant les deux côtés de l'équation de vérification Schnorr :
 
-- \( g^s mod p \) (côté gauche),
-- \( r * y^e mod p \) (côté droit).
+- \( `g`^`s` mod `p` \) (côté gauche),
+- \( `r` * `y`^`e` mod `p` \) (côté droit).
 
 Si les deux côtés sont égaux, la preuve est considérée comme valide.
 
@@ -52,7 +52,7 @@ Après avoir fait les mêmes étapes que précédemment j'ai obtenu des valeurs.
 
 Pour extraire la variable x, nous exploiterons la relation présente dans la signature retournée: `s` = `k` + `e` * `x` mod(`p` - 1)
 
-Comme le serveur utilise le même y et le même p pour chaque requête, cela signifie que la clé privée x reste la même. Cependant, un nouvel aléa k est généré à chaque requête, ce qui signifie que si nous obtenons deux preuves différentes avec des valeurs différentes pour k mais la même valeur pour x, nous pouvons résoudre x.
+Comme le serveur utilise le même `y` et le même `p` pour chaque requête, cela signifie que la clé privée `x` reste la même. Cependant, un nouvel aléa `k` est généré à chaque requête, ce qui signifie que si nous obtenons deux preuves différentes avec des valeurs différentes pour `k` mais la même valeur pour `x`, nous pouvons résoudre `x`.
 
 Pour procéder nous allons faire deux requêtes successives, pour obtenir deux ensemble de données `(r1, e1, s1)` et `(r2, e2,s2)`.
 
@@ -71,8 +71,8 @@ On utilise alors le code ci-dessous:
 Le code reproduit le développement mathématique expliqué au dessus: 
 - On envoie deux requêtes au serveur
 - On extrait les valeurs nécessaires (`r`,` e`, `s`) de la réponse JSON.
-- On calcule la différence entre les valeurs s et e.
-- Pour résoudre l'équation en x, on utilise l'inverse modulaire de delta_e mod(p-1), puis on obtient `x`.
+- On calcule la différence entre les valeurs `s` et `e`.
+- Pour résoudre l'équation en `x`, on utilise l'inverse modulaire de delta_e mod(`p`-1), puis on obtient `x`.
 
 Et voici le résultat obtenu: 
 
