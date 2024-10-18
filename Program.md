@@ -10,6 +10,10 @@ Aussi j'ai installer Flask et  pycryptodome
 La commande sudo dockerd démarre le démon Docker (aussi appelé Docker Daemon), qui est un service en arrière-plan responsable de la gestion des conteneurs Docker sur une machine.
 ![image](https://github.com/user-attachments/assets/ef561a2a-2373-479e-a451-0de844dc68d7)
 
+### Construction d'une image Docker 
+
+![image](https://github.com/user-attachments/assets/d6223731-7c69-4d1b-b280-26e8ecbc576a)
+
 ### Lancement d'un conteneur Docker 
 Lancement du conteneur Docker à partir d'une image. Ici, l'image utilisée est nommée schnorr_server. Le conteneur exécutera l'application encapsulée dans cette image.
 
