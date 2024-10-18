@@ -44,3 +44,25 @@ Ensuite, le serveur renvoie un résultat **JSON** avec une indication si la preu
 Dans notre cas c'est bien valide.
 
 ### Attaque d'une implémentation vulnérable
+
+J'ai fait un fichier à part contenant un Dockerfile spécifiant le nom du fichier py pour l'image, ainsi que le code vulnerable.
+Après avoir fait les mêmes étapes que précédemment j'ai obtenu des valeurs. Cependant au lieu de changer à chaque nouvelle requête, le `p` et le `y` reste les mêmes.
+Mettre l'image avec les trucs similaires
+
+Pour extraire la variable x, nous exploiterons la relation présente dans la signature retournée: `s` = `k` + `e` * `x` mod(`p` - 1)
+
+Comme le serveur utilise le même y et le même p pour chaque requête, cela signifie que la clé privée x reste la même. Cependant, un nouvel aléa k est généré à chaque requête, ce qui signifie que si nous obtenons deux preuves différentes avec des valeurs différentes pour k mais la même valeur pour x, nous pouvons résoudre x.
+
+Pour procéder nous allons faire deux requêtes successives, pour obtenir deux ensemble de données `(r1, e1, s1)` et `(r2, e2,s2)`.
+
+On aura donc les deux équations: 
+- `s1` = `k1` + `e1` * `x` mod(`p`- 1)
+- `s2` = `k2` + `e2` * `x` mod(`p`- 1)
+
+Et en soustrayant les deux équation `s2` - `s1` on obtient alors: 
+
+Mettre équation
+
+On utilise alors le code ci-dessous: 
+
+mettre code
