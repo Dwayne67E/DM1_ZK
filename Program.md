@@ -1,7 +1,7 @@
 # DM1 - Zero-Knowledge - ENKIRCHE Elias
 ## Vous trouverez dans ce repo tous les documents et fichier nécessaire à la réalisation du DM
 ### Préliminaire
-Afin de réaliser ce DM, j'ai du installé docker sur mon Pc, merci au site ci-dessous: 
+Afin de réaliser ce DM, j'ai du installer docker sur mon Pc, merci au site ci-dessous: 
 https://dataedo.com/docs/installing-docker-on-windows-via-wsl
 
 Aussi j'ai installer Flask et  pycryptodome
@@ -11,7 +11,7 @@ La commande sudo dockerd démarre le démon Docker (aussi appelé Docker Daemon)
 ![image](https://github.com/user-attachments/assets/ef561a2a-2373-479e-a451-0de844dc68d7)
 
 ### Construction d'une image Docker 
-
+Crée une image Docker appelée schnorr_server en se basant sur le Dockerfile qui se trouve dans le répertoire courant.
 ![image](https://github.com/user-attachments/assets/d6223731-7c69-4d1b-b280-26e8ecbc576a)
 
 ### Lancement d'un conteneur Docker 
