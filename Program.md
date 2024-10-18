@@ -38,3 +38,5 @@ Ensuite, le serveur renvoie un résultat **JSON** avec une indication si la preu
 
 ![image](https://github.com/user-attachments/assets/2ca05fd9-c1ad-4354-903a-64e71f099ee3)
 Dans notre cas c'est bien valide.
+
+### Attaque d'une implémentation vulnérable
