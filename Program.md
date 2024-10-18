@@ -61,13 +61,20 @@ On aura donc les deux équations:
 - `s2` = `k2` + `e2` * `x` mod(`p`- 1)
 
 Et en soustrayant les deux équation `s2` - `s1` on obtient alors: 
+
 ![image](https://github.com/user-attachments/assets/2f052e44-4045-4ee1-b781-b8fd6e38b2f0)
 
 On utilise alors le code ci-dessous: 
 
 ![image](https://github.com/user-attachments/assets/3f81f07c-8586-4dcf-9cce-05399c658d5a)
 
-explication code 
+Le code reproduit le développement mathématique expliqué au dessus: 
+- On envoie deux requêtes au serveur
+- On extrait les valeurs nécessaires (`r`,` e`, `s`) de la réponse JSON.
+- On calcule la différence entre les valeurs s et e.
+- Pour résoudre l'équation en x, on utilise l'inverse modulaire de delta_e mod(p-1), puis on obtient `x`.
 
 Et voici le résultat obtenu: 
+
 ![image](https://github.com/user-attachments/assets/35b0fc46-751d-4b9f-9b0f-404d20bb3454)
+
