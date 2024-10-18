@@ -67,3 +67,7 @@ On utilise alors le code ci-dessous:
 
 ![image](https://github.com/user-attachments/assets/3f81f07c-8586-4dcf-9cce-05399c658d5a)
 
+explication code 
+
+Et voici le résultat obtenu: 
+![image](https://github.com/user-attachments/assets/35b0fc46-751d-4b9f-9b0f-404d20bb3454)
