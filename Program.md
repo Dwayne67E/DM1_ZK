@@ -47,7 +47,8 @@ Dans notre cas c'est bien valide.
 
 J'ai fait un fichier à part contenant un Dockerfile spécifiant le nom du fichier py pour l'image, ainsi que le code vulnerable.
 Après avoir fait les mêmes étapes que précédemment j'ai obtenu des valeurs. Cependant au lieu de changer à chaque nouvelle requête, le `p` et le `y` reste les mêmes.
-Mettre l'image avec les trucs similaires
+
+![Capture d'écran 2024-10-18 192237](https://github.com/user-attachments/assets/cf8de84b-0aac-4e87-b67c-556e66be51a1)
 
 Pour extraire la variable x, nous exploiterons la relation présente dans la signature retournée: `s` = `k` + `e` * `x` mod(`p` - 1)
 
@@ -61,8 +62,9 @@ On aura donc les deux équations:
 
 Et en soustrayant les deux équation `s2` - `s1` on obtient alors: 
 
-Mettre équation
+![Capture d'écran 2024-10-18 200724](https://github.com/user-attachments/assets/3fef8a46-240b-4a39-8c5e-5559e9fc1b65)
 
 On utilise alors le code ci-dessous: 
 
-mettre code
+![image](https://github.com/user-attachments/assets/3f81f07c-8586-4dcf-9cce-05399c658d5a)
+
